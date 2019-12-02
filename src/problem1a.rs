@@ -1,6 +1,5 @@
 
 use std::fs;
-use std::str::Lines;
 
 pub fn read_file() -> Vec<String> {
     println!("Reading file?");
