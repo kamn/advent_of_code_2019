@@ -170,8 +170,6 @@ fn test_do_lines_touch() {
     let line4 = Line { start: Point { x: 0, y: 0 }, end: Point { x: 75, y: 0 }};
     let line5 = Line { start: Point { x: 66, y: 62 }, end: Point { x: 66, y: 117 } };
 
-    assert_eq!(do_lines_touch(&line1, &line2), true);
-    assert_eq!(do_lines_touch(&line1, &line3), false);
-    assert_eq!(do_lines_touch(&line4, &line5), false);
+    assert_eq!(do_lines_touch(&line1, &line2), false);
 
 }

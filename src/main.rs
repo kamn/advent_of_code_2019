@@ -4,9 +4,11 @@ mod problem2a;
 mod problem2b;
 mod day3a;
 mod day3b;
+mod day4a;
+mod day4b;
 
 fn main() {
-    let result = day3b::calc();
-    println!("day3b\t{}", result);
+    let result = day4b::calc();
+    println!("day4b\t{}", result);
 
 }
