@@ -1,6 +1,5 @@
 
 use std::fs;
-use std::collections::HashMap;
 
 enum WireSegment {
     Left(i32),
