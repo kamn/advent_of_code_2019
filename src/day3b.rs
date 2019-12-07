@@ -106,7 +106,7 @@ fn convert_to_lines (wire_segs : Vec<WireSegment>) -> Vec<Line> {
     let point1 = Point { x: 0, y: 0 };
     let point2 =  Point { x: 0, y: 0 };
     let line1 = Line { start :point1, end : point2};
-    let mut v = vec![line1];
+    let v = vec![line1];
 
     let mut result = wire_segs.into_iter()
         .fold(v, |mut v, x| {
@@ -163,11 +163,7 @@ fn test_do_lines_touch() {
     let point3 = Point { x: 6, y: 0 };
     let point4 =  Point { x: 0, y: 6 };
     let line2 = Line { start :point3, end : point4};
-    let point5 = Point { x: 1, y: 0 };
-    let point6 =  Point { x: 7, y: 6 };
-    let line3 = Line { start:Point { x: 1, y: 0 }, end: Point { x: 7, y: 6 }};
-    let line4 = Line { start: Point { x: 0, y: 0 }, end: Point { x: 75, y: 0 }};
-    let line5 = Line { start: Point { x: 66, y: 62 }, end: Point { x: 66, y: 117 } };
+
 
     assert_eq!(do_lines_touch(&line1, &line2), false);
 

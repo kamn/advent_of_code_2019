@@ -22,11 +22,6 @@ fn create_computer_mem(data : Vec<String>) -> HashMap<i32, i32>{
     mem
 }
 
-fn map_mem(mem : &HashMap<i32, i32>) {
-    for (pos, value) in mem {
-        println!("\t{}: {}\t", pos, value);
-    }
-} 
 
 fn run_computer(mut mem : HashMap<i32, i32>) -> i32 {
     let mut idx : i32 = 0;

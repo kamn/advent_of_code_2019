@@ -1,8 +1,6 @@
 use std::fs;
 use std::collections::HashMap;
 use std::io;
-use std::io::prelude::*;
-use std::ops::Rem;
 
 
 pub fn read_file() -> Vec<String> {
@@ -26,12 +24,6 @@ fn create_computer_mem(data : Vec<String>) -> HashMap<i32, i32>{
     
     mem
 }
-
-fn map_mem(mem : &HashMap<i32, i32>) {
-    for (pos, value) in mem {
-        println!("Pos.data:\t{} -> {}", pos, value);
-    }
-} 
 
 
 fn get_mem_value(mem : &HashMap<i32,i32>, idx : i32, mode : i32) -> i32 {
@@ -96,8 +88,8 @@ fn run_computer(mut mem : HashMap<i32, i32>) -> HashMap<i32, i32> {
                     .expect("failed to read input.");
                 let input_val = n.trim().parse::<i32>().unwrap();
                 println!("Input, {}", n);
-                let location = mem.get(&(idx + 1)).unwrap();
-                mem.insert(*location, input_val);
+                let location = mem.get(&(idx + 1)).cloned().unwrap();
+                mem.insert(location, input_val);
                 idx = idx +2;
                 //map_mem(&mem);
             },

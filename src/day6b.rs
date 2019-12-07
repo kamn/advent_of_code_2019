@@ -70,7 +70,7 @@ fn count_jumps(orbit_map : &HashMap<String, String>) -> i32 {
     follow_orbits(orbit_map, &connecting_planet, &santa_planet, 0) + follow_orbits(orbit_map, &connecting_planet, &your_planet, 0)
 }
 
-
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
     let result_map = parse_lines(data);
