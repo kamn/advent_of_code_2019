@@ -72,6 +72,7 @@ fn run_computer(mut mem : HashMap<i32, i32>) -> HashMap<i32, i32> {
     mem
 }
 
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
     let mem = create_computer_mem(data);

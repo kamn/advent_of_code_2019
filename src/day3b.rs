@@ -63,8 +63,8 @@ fn line_intersection(line1 : Line, line2 : Line) -> Option<Point> {
 
 fn to_wire_seg (txt : String) -> WireSegment {
     let ch = txt.chars().next().unwrap();
-    let txtNum = &txt[1..];
-    let num = txtNum.parse::<i32>().unwrap();
+    let txt_num = &txt[1..];
+    let num = txt_num.parse::<i32>().unwrap();
     match ch {
         'L' => WireSegment::Left(num),
         'R' => WireSegment::Right(num),
@@ -119,7 +119,7 @@ fn convert_to_lines (wire_segs : Vec<WireSegment>) -> Vec<Line> {
     result.drain(1..).collect()
 }
 
-
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
     let first_line = data.get(0).unwrap();

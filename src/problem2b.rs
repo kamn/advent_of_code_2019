@@ -65,6 +65,7 @@ fn run_computer(mut mem : HashMap<i32, i32>) -> i32 {
     *mem.get(&0).unwrap()
 }
 
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     for x in 1..99 {
         for y in 1..99 {

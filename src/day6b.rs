@@ -40,26 +40,26 @@ fn follow_orbits(orbit_map : &HashMap<String, String>, target : &String, satelli
 
 }
 
-fn find_mutual_path (orbit_map : &HashMap<String, String>, satelliteA : &String, satelliteB : &String) -> String {
+fn find_mutual_path (orbit_map : &HashMap<String, String>, satellite_a : &String, satellite_b : &String) -> String {
 
-    let mut planetA = satelliteA;
-    let mut planetB = satelliteB;
+    let mut planet_a = satellite_a;
+    let mut planet_b = satellite_b;
     let mut done = false;
-    while !done && planetA != "COM" {
-        while !done &&  planetB != "COM" {
-            if planetA == planetB {
+    while !done && planet_a != "COM" {
+        while !done &&  planet_b != "COM" {
+            if planet_a == planet_b {
                 done = true
             } else {
-                planetB = orbit_map.get(planetB).unwrap();
+                planet_b = orbit_map.get(planet_b).unwrap();
             }
         }
         if !done {
-            planetA = orbit_map.get(planetA).unwrap();
-            planetB = satelliteB;
+            planet_a = orbit_map.get(planet_a).unwrap();
+            planet_b = satellite_b;
 
         }
     }
-    planetA.clone()
+    planet_a.clone()
 }
 
 fn count_jumps(orbit_map : &HashMap<String, String>) -> i32 {

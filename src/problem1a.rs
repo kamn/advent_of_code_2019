@@ -15,6 +15,7 @@ fn calc_fuel(num : i32) -> i32 {
     (num/3) -2
 }
 
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
     data.into_iter()

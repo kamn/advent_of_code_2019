@@ -47,6 +47,8 @@ fn count_orbits(orbit_map : &HashMap<String, String>) -> i32 {
     }
     counter
 }
+
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
     let result_map = parse_lines(data);

@@ -59,6 +59,7 @@ fn valid_password(password : i32) -> bool {
     never_decrease(password)
 }
 
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
     let mut counter = 0;

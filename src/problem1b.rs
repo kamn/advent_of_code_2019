@@ -20,6 +20,7 @@ fn calc_fuel_recur(total: i32, num : i32) -> i32 {
     }
 }
 
+#[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
     data.into_iter()
