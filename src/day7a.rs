@@ -198,6 +198,27 @@ fn get_all_combos() -> Vec<Vec<i32>> {
     big_vec.clone()
 }
 
+fn get_all_feedback_combos() -> Vec<Vec<i32>> {
+    let mut big_vec = vec![];
+    for a in 0..5 {
+        for b in 0..5 {
+            for c in 0..5 {
+                for d in 0..5 {
+                    for e in 0..5 {
+                        if (a != b && a != c && a != d && a != e
+                            && b != c && b != d && b != e
+                            && c != d && c != e
+                            && d != e) {
+                            big_vec.push(vec![a,b,c,d,e]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    big_vec.clone()
+}
+
 #[allow(dead_code)]
 pub fn calc() -> i32 {
     let data = read_file();
