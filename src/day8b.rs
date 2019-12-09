@@ -22,6 +22,7 @@ fn parse_input (contents : String) -> Vec<String> {
     result
 }
 
+#[allow(dead_code)]
 fn count_string (layer : Vec<String>, pattern : String)  -> i32 {
     let mut total = 0;
     for c in layer.into_iter() {

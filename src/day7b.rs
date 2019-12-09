@@ -176,11 +176,11 @@ fn computer_halted(mem : &mut HashMap<i32, i32>) -> bool {
 
 fn get_thrust_signal(sequence : Vec<i32>, code : String) -> i32 {
     let mut intial_input = 0;
-    let mut amp_a = &mut create_computer_mem(code.to_owned());
-    let mut amp_b = &mut create_computer_mem(code.to_owned());
-    let mut amp_c = &mut create_computer_mem(code.to_owned());
-    let mut amp_d = &mut create_computer_mem(code.to_owned());
-    let mut amp_e = &mut create_computer_mem(code.to_owned());
+    let amp_a = &mut create_computer_mem(code.to_owned());
+    let amp_b = &mut create_computer_mem(code.to_owned());
+    let amp_c = &mut create_computer_mem(code.to_owned());
+    let amp_d = &mut create_computer_mem(code.to_owned());
+    let amp_e = &mut create_computer_mem(code.to_owned());
  
     let mut round_robin_vec = vec![amp_e,amp_d,amp_c,amp_b,amp_a];
     let mut stop = false;
@@ -216,27 +216,6 @@ fn run_single_amp(inputs: Vec<i32>, mem : &mut HashMap<i32, i32>, signal : i32) 
     run_computer(mem, inputs.clone(), signal)
 }
 
-fn get_all_combos() -> Vec<Vec<i32>> {
-    let mut big_vec = vec![];
-    for a in 0..5 {
-        for b in 0..5 {
-            for c in 0..5 {
-                for d in 0..5 {
-                    for e in 0..5 {
-                        if (a != b && a != c && a != d && a != e
-                            && b != c && b != d && b != e
-                            && c != d && c != e
-                            && d != e) {
-                            big_vec.push(vec![a,b,c,d,e]);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    big_vec.clone()
-}
-
 fn get_all_feedback_combos() -> Vec<Vec<i32>> {
     let mut big_vec = vec![];
     for a in 5..10 {
@@ -244,10 +223,10 @@ fn get_all_feedback_combos() -> Vec<Vec<i32>> {
             for c in 5..10 {
                 for d in 5..10 {
                     for e in 5..10 {
-                        if (a != b && a != c && a != d && a != e
+                        if a != b && a != c && a != d && a != e
                             && b != c && b != d && b != e
                             && c != d && c != e
-                            && d != e) {
+                            && d != e {
                             big_vec.push(vec![a,b,c,d,e]);
                         }
                     }
