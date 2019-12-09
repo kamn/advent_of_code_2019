@@ -49,7 +49,7 @@ fn get_mem_value(mem : &HashMap<i64,i64>, idx : i64, mode : i64) -> i64 {
         2 => {
             let relative_base : i64 = get_mem_value(&mem, -3, 1);
             let offset = mem.get(&idx).unwrap_or(&0_i64);
-            println!("Relative : {} {}", relative_base, offset);
+            //println!("Relative : {} {}", relative_base, offset);
             let val = mem.get(&(relative_base + offset)).unwrap_or(&0_i64);
             val.clone()
         }
@@ -71,7 +71,7 @@ fn get_mem_idx(mem : &HashMap<i64,i64>, idx : i64, mode : i64) -> i64 {
         2 => {
             let relative_base : i64 = get_mem_value(&mem, -3, 1);
             let offset = mem.get(&idx).unwrap_or(&0_i64);
-            println!("Relative : {} {}", relative_base, offset);
+            //println!("Relative : {} {}", relative_base, offset);
             relative_base + offset
         }
         _ => {
@@ -95,10 +95,10 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
     while idx >= 0 {
         let instruction = mem.get(&idx).unwrap_or(&0_i64);
         let (a,b,c,opcode) = parse_instruction(instruction.clone());
-        println!("idx> {}", idx);
+        //println!("idx> {}", idx);
         match opcode {
             1 => {
-                println!("Step => Add");
+                //println!("Step => Add");
                 let val1 = get_mem_value(&mem, idx+1, c);
                 let val2 = get_mem_value(&mem, idx+2, b);
                 let result = val1 + val2;
@@ -108,7 +108,7 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
                 idx = idx +4;
             },
             2 => {
-                println!("Step => Multi");
+                //println!("Step => Multi");
                 let val1 = get_mem_value(&mem, idx+1, c);
                 let val2 = get_mem_value(&mem, idx+2, b);
                 let result = val1 * val2;
@@ -136,10 +136,10 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
                 idx = idx +2;
             },
             5 => {
-                println!("Step => jump-if-true ");
+                //println!("Step => jump-if-true ");
                 let val1 = get_mem_value(&mem, idx+1, c);
                 let val2 = get_mem_value(&mem, idx+2, b);
-                println!("step: jump-if-true {}, {}",val1, val2);
+                //println!("step: jump-if-true {}, {}",val1, val2);
 
                 if val1 != 0 {
                     idx = val2
@@ -148,10 +148,10 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
                 }
             },
             6 => {
-                println!("Step => jump-if-false ");
+                //println!("Step => jump-if-false ");
                 let val1 = get_mem_value(&mem, idx+1, c);
                 let val2 = get_mem_value(&mem, idx+2, b);
-                println!("step: jump-if-false {}, {}",val1, val2);
+                //println!("step: jump-if-false {}, {}",val1, val2);
 
                 if val1 == 0 {
                     idx = val2
@@ -160,11 +160,11 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
                 }
             },
             7 => {
-                println!("Step => less-than ");
+                //println!("Step => less-than ");
                 let val1 = get_mem_value(&mem, idx+1, c);
                 let val2 = get_mem_value(&mem, idx+2, b);
                 let location = get_mem_idx(&mem, idx+3, a);
-                println!("step: less than {}, {}, to {}",val1, val2, location);
+                //println!("step: less than {}, {}, to {}",val1, val2, location);
 
                 if val1 < val2 {
                     &mem.insert(location, 1);
@@ -174,11 +174,11 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
                 idx = idx + 4;
             },
             8 => {
-                println!("Step => equals ");
+                //println!("Step => equals ");
                 let val1 = get_mem_value(&mem, idx+1, c);
                 let val2 = get_mem_value(&mem, idx+2, b);
                 let location = get_mem_idx(&mem, idx+3, a);
-                println!("step: equals  {}, {}, to {}",val1, val2, location);
+                //println!("step: equals  {}, {}, to {}",val1, val2, location);
 
                 if val1 == val2 {
                     mem.insert(location, 1);
@@ -188,11 +188,11 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
                 idx = idx + 4;
             },
             9 => {
-                println!("Step => relative mod ");
+                //println!("Step => relative mod ");
                 let mut relative_base = get_mem_value(&mem, -3, 1);
                 let val1 = get_mem_value(&mem, idx+1, c);
                 relative_base = relative_base + val1;
-                println!("=> {}", relative_base);
+                //println!("=> {}", relative_base);
                 mem.insert(-3, relative_base);
                 idx = idx + 2;
             },
@@ -214,7 +214,7 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
 pub fn calc() -> i64 {
     let code = read_file();
     let mem = &mut  create_computer_mem(code.to_string());
-    let input_vec : Vec<i64> = vec![1_i64];
+    let input_vec : Vec<i64> = vec![2];
     let output_mem = run_computer(mem, input_vec);
     let result_str : Vec<String> = output_mem.into_iter()
         .map(|x : i64|  x.to_string())

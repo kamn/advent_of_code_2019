@@ -14,9 +14,10 @@ mod day7b;
 mod day8a;
 mod day8b;
 mod day9a;
+mod day9b;
 
 fn main() {
-    let result = day9a::calc();
-    println!("day9a\t{}", result);
+    let result = day9b::calc();
+    println!("day9b\t{}", result);
 
 }
