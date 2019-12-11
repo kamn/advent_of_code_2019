@@ -67,8 +67,6 @@ pub fn calc() -> i32 {
 
 #[test]
 fn test_day8a_count_str() {
-    let width = 9;
-    let height = 9;
     let example1 = "123456789012";
     let x : Vec<String> = example1.to_string().split("").map(ToOwned::to_owned).collect();
     assert_eq!(count_string(x.to_owned(), "1".to_string()), 2);

@@ -15,6 +15,8 @@ fn read_file() -> String {
     contents.to_owned()
 }
 
+const IDX_IDX : i64 = -2;
+
 fn create_computer_mem(contents : String) -> HashMap<i64, i64>{
     let data : Vec<String> = contents.split(",").map(ToOwned::to_owned).collect();
     let mut mem = HashMap::new();
@@ -25,7 +27,7 @@ fn create_computer_mem(contents : String) -> HashMap<i64, i64>{
         mem.insert(pos32, v);
     }
     //index
-    mem.insert(-2, 0_i64);
+    mem.insert(IDX_IDX, 0_i64);
     //relative
     mem.insert(-3, 0_i64);
     mem

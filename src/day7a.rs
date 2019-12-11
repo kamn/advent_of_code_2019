@@ -83,7 +83,7 @@ fn run_computer(mut mem : HashMap<i32, i32>, mut inputs : Vec<i32>) -> i32 {
             },
             3 => {
                 println!("Step => Input");
-                let mut n = String::new();
+                let n = String::new();
                 let input_val = inputs.pop().unwrap();
                 println!("Input, {}", n);
                 let location = mem.get(&(idx + 1)).cloned().unwrap();
@@ -178,27 +178,6 @@ fn run_single_amp(inputs: Vec<i32>, code : String) -> i32 {
 }
 
 fn get_all_combos() -> Vec<Vec<i32>> {
-    let mut big_vec = vec![];
-    for a in 0..5 {
-        for b in 0..5 {
-            for c in 0..5 {
-                for d in 0..5 {
-                    for e in 0..5 {
-                        if (a != b && a != c && a != d && a != e
-                            && b != c && b != d && b != e
-                            && c != d && c != e
-                            && d != e) {
-                            big_vec.push(vec![a,b,c,d,e]);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    big_vec.clone()
-}
-
-fn get_all_feedback_combos() -> Vec<Vec<i32>> {
     let mut big_vec = vec![];
     for a in 0..5 {
         for b in 0..5 {

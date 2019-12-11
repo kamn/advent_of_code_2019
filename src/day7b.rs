@@ -85,7 +85,7 @@ fn run_computer(mem : &mut HashMap<i32, i32>, mut inputs : Vec<i32>, signal : i3
             },
             3 => {
                 //println!("Step => Input");
-                let mut n = String::new();
+                let n = String::new();
                 let input_val = inputs.pop().unwrap();
                 print!("Input\t {} -> ", input_val);
                 let location = mem.get(&(idx + 1)).cloned().unwrap();
@@ -168,7 +168,7 @@ fn run_computer(mem : &mut HashMap<i32, i32>, mut inputs : Vec<i32>, signal : i3
 }
 
 fn computer_halted(mem : &mut HashMap<i32, i32>) -> bool {
-    let mut idx : i32 = get_mem_value(&mem, -2, 1);
+    let idx : i32 = get_mem_value(&mem, -2, 1);
     let halted = idx == -1;
     println!("halted {:?}", halted);
     halted

@@ -106,7 +106,7 @@ fn convert_to_lines (wire_segs : Vec<WireSegment>) -> Vec<Line> {
     let point1 = Point { x: 0, y: 0 };
     let point2 =  Point { x: 0, y: 0 };
     let line1 = Line { start :point1, end : point2};
-    let mut v = vec![line1];
+    let v = vec![line1];
 
     let mut result = wire_segs.into_iter()
         .fold(v, |mut v, x| {
