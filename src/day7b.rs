@@ -1,8 +1,5 @@
 use std::fs;
 use std::collections::HashMap;
-use std::io;
-use std::io::prelude::*;
-use std::ops::Rem;
 
 
 fn read_file() -> String {
@@ -60,7 +57,7 @@ fn run_computer(mem : &mut HashMap<i32, i32>, mut inputs : Vec<i32>, signal : i3
     let mut output_result : i32 = signal;
     while idx >= 0 {
         let instruction = mem.get(&idx).unwrap_or(&99);
-        let (a,b,c,opcode) = parse_instruction(instruction.clone());
+        let (_a,b,c,opcode) = parse_instruction(instruction.clone());
         //println!("idx> {}", idx);
         match opcode {
             1 => {
@@ -85,7 +82,6 @@ fn run_computer(mem : &mut HashMap<i32, i32>, mut inputs : Vec<i32>, signal : i3
             },
             3 => {
                 //println!("Step => Input");
-                let n = String::new();
                 let input_val = inputs.pop().unwrap();
                 print!("Input\t {} -> ", input_val);
                 let location = mem.get(&(idx + 1)).cloned().unwrap();
@@ -95,7 +91,7 @@ fn run_computer(mem : &mut HashMap<i32, i32>, mut inputs : Vec<i32>, signal : i3
             },
             4 => {
                 //println!("Step => Output");
-                let val1 = get_mem_value(&mem, (idx+1), c);
+                let val1 = get_mem_value(&mem, idx+1, c);
                 println!("Output\t {}", val1);
                 output_result = val1;
                 &mem.insert(-2, idx +2);
@@ -193,7 +189,7 @@ fn get_thrust_signal(sequence : Vec<i32>, code : String) -> i32 {
     println!("### sTARTING LOOPING!");
     while !stop {
         let mut in_loop = intial_input;
-        for seq_val in sequence.clone().into_iter() {
+        for _seq_val in sequence.clone().into_iter() {
             let cur_mem = round_robin_vec.pop().unwrap();
             in_loop = run_single_amp(vec![in_loop], cur_mem, in_loop);
             round_robin_vec.insert(0, cur_mem);
@@ -245,7 +241,7 @@ pub fn calc() -> i32 {
     for combo in get_all_feedback_combos().into_iter() {
         println!("Combo:\n{:?}", combo);
         let result = get_thrust_signal(combo, data.to_owned());
-        if (result > highest) {
+        if result > highest {
             highest = result;
         }
     }

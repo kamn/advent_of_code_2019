@@ -51,7 +51,7 @@ fn do_lines_touch (line1 : &Line, line2 : &Line) -> bool {
 
 fn line_intersection(line1 : Line, line2 : Line) -> Option<Point> {
     if do_lines_touch(&line1, &line2) {
-        if (line1.start.x == line1.end.x) {
+        if line1.start.x == line1.end.x {
             Some(Point { x: line1.start.x, y: line2.start.y })
         } else {
             Some(Point { x: line2.start.x, y: line1.start.y })
@@ -130,8 +130,6 @@ pub fn calc() -> i32 {
         for l2 in second_line.into_iter() {
             if do_lines_touch(&l1, &l2) {
                 let new_point = line_intersection(l1.clone(), l2.clone()).unwrap();
-                let dist = manhattan_dist((0,0), (new_point.x.clone(), new_point.y.clone()));
-            //if dist != 0 {
 
                 if manhattan_dist((0,0), (new_point.x.clone(), new_point.y.clone())) < lowest_dist {
                     let dist = manhattan_dist((0,0), (new_point.x.clone(), new_point.y.clone()));
@@ -148,7 +146,6 @@ pub fn calc() -> i32 {
             }
         }
     }
-    let lines_touch = 0;
     manhattan_dist((0,0), (6,6))
 }
 
@@ -165,11 +162,6 @@ fn test_do_lines_touch() {
     let point3 = Point { x: 6, y: 0 };
     let point4 =  Point { x: 0, y: 6 };
     let line2 = Line { start :point3, end : point4};
-    let point5 = Point { x: 1, y: 0 };
-    let point6 =  Point { x: 7, y: 6 };
-    let line3 = Line { start:Point { x: 1, y: 0 }, end: Point { x: 7, y: 6 }};
-    let line4 = Line { start: Point { x: 0, y: 0 }, end: Point { x: 75, y: 0 }};
-    let line5 = Line { start: Point { x: 66, y: 62 }, end: Point { x: 66, y: 117 } };
 
     assert_eq!(do_lines_touch(&line1, &line2), false);
 

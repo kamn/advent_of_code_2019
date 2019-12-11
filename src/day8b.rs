@@ -1,9 +1,4 @@
 use std::fs;
-use std::collections::HashMap;
-use std::io;
-use std::io::prelude::*;
-use std::ops::Rem;
-
 
 fn read_file() -> String {
     println!("Reading file?");
@@ -53,7 +48,7 @@ fn process(raw_data : Vec<String>, height : usize, width : usize) -> Vec<String>
     image
 }
 
-fn print(image : Vec<String>, height : usize, width : usize) -> () {
+fn print(image : Vec<String>, _height : usize, width : usize) -> () {
     let iter  = image.chunks(width);
     for layer in iter {
         println!("{:?}",layer);

@@ -38,7 +38,7 @@ fn follow_orbits(orbit_map : &HashMap<String, String>, satellite : &String, coun
 
 fn count_orbits(orbit_map : &HashMap<String, String>) -> i32 {
     let mut counter = 0;
-    for (pos, value) in orbit_map {
+    for (pos, _value) in orbit_map {
         counter = counter + follow_orbits(orbit_map, &pos, 0)
     }
     counter

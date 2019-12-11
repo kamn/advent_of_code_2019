@@ -1,8 +1,5 @@
 use std::fs;
 use std::collections::HashMap;
-use std::io;
-use std::io::prelude::*;
-use std::ops::Rem;
 
 
 fn read_file() -> String {
@@ -58,7 +55,7 @@ fn run_computer(mut mem : HashMap<i32, i32>, mut inputs : Vec<i32>) -> i32 {
     let mut result : i32 = 0;
     while idx >= 0 {
         let instruction = mem.get(&idx).unwrap_or(&99);
-        let (a,b,c,opcode) = parse_instruction(instruction.clone());
+        let (_a,b,c,opcode) = parse_instruction(instruction.clone());
         println!("idx> {}", idx);
         match opcode {
             1 => {
@@ -93,7 +90,7 @@ fn run_computer(mut mem : HashMap<i32, i32>, mut inputs : Vec<i32>) -> i32 {
             },
             4 => {
                 println!("Step => Output");
-                let val1 = get_mem_value(&mem, (idx+1), c);
+                let val1 = get_mem_value(&mem, idx+1, c);
                 println!("Output \t {}", val1);
                 result = val1;
                 idx = idx +2;
@@ -173,7 +170,7 @@ fn get_thrust_signal(sequence : Vec<i32>, code : String) -> i32 {
 }
 
 fn run_single_amp(inputs: Vec<i32>, code : String) -> i32 {
-    let mut mem = create_computer_mem(code);
+    let mem = create_computer_mem(code);
     run_computer(mem, inputs.clone())
 }
 
@@ -184,10 +181,10 @@ fn get_all_combos() -> Vec<Vec<i32>> {
             for c in 0..5 {
                 for d in 0..5 {
                     for e in 0..5 {
-                        if (a != b && a != c && a != d && a != e
+                        if a != b && a != c && a != d && a != e
                             && b != c && b != d && b != e
                             && c != d && c != e
-                            && d != e) {
+                            && d != e {
                             big_vec.push(vec![a,b,c,d,e]);
                         }
                     }
@@ -205,7 +202,7 @@ pub fn calc() -> i32 {
     for combo in get_all_combos().into_iter() {
         println!("Combo:\n{:?}", combo);
         let result = get_thrust_signal(combo, data.to_owned());
-        if (result > highest) {
+        if result > highest {
             highest = result;
         }
     }

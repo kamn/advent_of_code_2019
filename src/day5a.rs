@@ -55,7 +55,7 @@ fn run_computer(mut mem : HashMap<i32, i32>) -> HashMap<i32, i32> {
     let mut idx : i32 = 0;
     while idx >= 0 {
         let instruction = mem.get(&idx).unwrap_or(&99);
-        let (a,b,c,opcode) = parse_instruction(instruction.clone());
+        let (_a,b,c,opcode) = parse_instruction(instruction.clone());
         println!("idx> {}", idx);
         match opcode {
             1 => {
@@ -95,7 +95,7 @@ fn run_computer(mut mem : HashMap<i32, i32>) -> HashMap<i32, i32> {
             },
             4 => {
                 println!("Step => Output");
-                let val1 = get_mem_value(&mem, (idx+1), c);
+                let val1 = get_mem_value(&mem, idx+1, c);
                 println!("Output \t {}", val1);
                 idx = idx +2;
                 //println!("step\t{}", "***");

@@ -1,8 +1,5 @@
 use std::fs;
 use std::collections::HashMap;
-use std::io;
-use std::io::prelude::*;
-use std::ops::Rem;
 use std::collections::HashSet;
 
 #[derive(Clone, Debug)]
@@ -57,10 +54,9 @@ fn gcd(mut a: i32, mut b : i32 ) ->  i32 {
 }
 
 fn find_forumla((x2, y2) :(i32, i32), (x1, y1) : (i32, i32)) -> (i32, i32) {
-    let mut x = x1 - x2;
-    let mut y = y1 - y2;
+    let x = x1 - x2;
+    let y = y1 - y2;
     let mutual_gcd = gcd(x.abs(), y.abs());
-    //println!("GCD of {} + {} = {}", x.abs(),  y.abs(), mutual_gcd);
     if x == 0 || y == 0 {
         if x == 0 {
             (0, y/y.abs())
@@ -96,9 +92,8 @@ fn check_spaces_at_distance(map: HashMap<(i32,i32), SpaceObject>, (x,y): (i32, i
 
 fn count_visible_asteroids(map: HashMap<(i32,i32), SpaceObject>, (x,y): (i32, i32)) -> usize {
     let mut formulas = HashSet::new();
-    for dist in 1..100 {
+    for dist in 1..60 {
         let new_hashset = check_spaces_at_distance(map.clone(), (x,y).clone(), dist);
-        //println!("{:?}", new_hashset);
         formulas = formulas.union(&new_hashset).cloned().collect();
     }
     println!("{:?} -> {:?}", (x,y), formulas.len());
@@ -109,8 +104,8 @@ fn count_visible_asteroids(map: HashMap<(i32,i32), SpaceObject>, (x,y): (i32, i3
 fn find_best_location (map: HashMap<(i32,i32), SpaceObject>) -> (i32,i32) {
     let mut best =(-1,-1);
     let mut most_ast = 0;
-    for x in 0..100 {
-        for y in 0..100 {
+    for x in 0..75 {
+        for y in 0..75 {
             let at_space = map.get(&(x,y)).unwrap_or(&SpaceObject::Nothing);
             match at_space {
                 SpaceObject::Asteroid  => {

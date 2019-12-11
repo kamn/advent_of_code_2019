@@ -51,7 +51,7 @@ fn do_lines_touch (line1 : &Line, line2 : &Line) -> bool {
 
 fn line_intersection(line1 : Line, line2 : Line) -> Option<Point> {
     if do_lines_touch(&line1, &line2) {
-        if (line1.start.x == line1.end.x) {
+        if line1.start.x == line1.end.x {
             Some(Point { x: line1.start.x, y: line2.start.y })
         } else {
             Some(Point { x: line2.start.x, y: line1.start.y })
@@ -137,7 +137,7 @@ pub fn calc() -> i32 {
                 let l2_add_steps = manhattan_dist((l2.start.x,l2.start.y), (new_point.x, new_point.y));
 
                 if (l1_steps + l1_add_steps + l2_steps +  l2_add_steps) < lowest_steps {
-                    let steps = (l1_steps + l1_add_steps + l2_steps +  l2_add_steps);
+                    let steps = l1_steps + l1_add_steps + l2_steps +  l2_add_steps;
                     lowest_steps = steps;
                     //println!("With text:\t{:?}\t{:?}", l1, l2);
                 }
@@ -146,7 +146,6 @@ pub fn calc() -> i32 {
         }
         l1_steps = l1_steps + manhattan_dist((l1.start.x,l1.start.y), (l1.end.x, l1.end.y))
     }
-    let lines_touch = 0;
     lowest_steps
 }
 

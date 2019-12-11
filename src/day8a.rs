@@ -1,9 +1,4 @@
 use std::fs;
-use std::collections::HashMap;
-use std::io;
-use std::io::prelude::*;
-use std::ops::Rem;
-
 
 fn read_file() -> String {
     println!("Reading file?");

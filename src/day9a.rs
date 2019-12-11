@@ -1,8 +1,5 @@
 use std::fs;
 use std::collections::HashMap;
-use std::io;
-use std::io::prelude::*;
-use std::ops::Rem;
 
 
 fn read_file() -> String {
@@ -129,7 +126,7 @@ fn  run_computer(mem : &mut HashMap<i64, i64>, mut inputs : Vec<i64>) -> Vec<i64
             },
             4 => {
                 println!("Step => Output");
-                let val1 = get_mem_value(&mem, (idx+1), c);
+                let val1 = get_mem_value(&mem, idx+1, c);
                 println!("Output\t {}", val1);
                 output_result.push(val1);
                 //&mem.insert(-2, idx +2);

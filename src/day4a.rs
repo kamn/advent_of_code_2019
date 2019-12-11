@@ -60,7 +60,6 @@ fn valid_password(password : i32) -> bool {
 
 #[allow(dead_code)]
 pub fn calc() -> i32 {
-    let data = read_file();
     let mut counter = 0;
     for x in 147_981..691_423 {
         if valid_password(x) {
