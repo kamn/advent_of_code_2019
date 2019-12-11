@@ -72,7 +72,7 @@ fn check_spaces_at_distance(map: HashMap<(i32,i32), SpaceObject>, (x,y): (i32, i
     let mut formulas = HashSet::new();
     for i in -distance..(distance+1) {
         for z in -distance..(distance+1) {
-            if(i.abs() == distance || z.abs() == distance){
+            if i.abs() == distance || z.abs() == distance {
                 let at_space = map.get(&(x + i, y + z)).unwrap_or(&SpaceObject::Nothing);
                 match at_space {
                     SpaceObject::Asteroid  => {
@@ -141,17 +141,6 @@ fn test_day10a_gcd() {
 
 #[test]
 fn test_day10a_example1() {
-    let r = "
-    #.........
-    ...A......
-    ...B..a...
-    .EDCG....a
-    ..F.c.b...
-    .....c....
-    ..efd.c.gb
-    .......c..
-    ....f...c.
-    ...e..d..c";
 
     assert_eq!(find_forumla((0,0), (4,0)), (1,0));
     //C

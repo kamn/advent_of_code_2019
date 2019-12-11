@@ -66,7 +66,7 @@ fn run_computer(mem : &mut HashMap<i32, i32>, mut inputs : Vec<i32>, signal : i3
                 let val2 = get_mem_value(&mem, idx+2, b);
                 let result = val1 + val2;
                 let location = get_mem_value(&mem, idx+3, 1);
-                ///println!("step: {} + {} = {}\t{}",val1, val2, result, "+++");
+                //println!("step: {} + {} = {}\t{}",val1, val2, result, "+++");
                 mem.insert(location, result);
                 idx = idx +4;
             },

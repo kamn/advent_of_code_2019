@@ -34,8 +34,8 @@ fn run_computer(mut mem : HashMap<i32, i32>) -> i32 {
                 let idx2 = mem.get(&(idx + 2)).unwrap();
                 let val2 = mem.get(&idx2).unwrap();
                 let result = val1 + val2;
-                let location = mem.get(&(idx + 3)).unwrap();
-                mem.insert(*location, result);
+                let location = mem.get(&(idx + 3)).unwrap().clone();
+                mem.insert(location, result);
                 idx = idx +4;
             },
             2 => {
@@ -44,8 +44,8 @@ fn run_computer(mut mem : HashMap<i32, i32>) -> i32 {
                 let idx2 = mem.get(&(idx + 2)).unwrap();
                 let val2 = mem.get(&idx2).unwrap();
                 let result = val1 * val2;
-                let location = mem.get(&(idx + 3)).unwrap();
-                mem.insert(*location, result);
+                let location = mem.get(&(idx + 3)).unwrap().clone();
+                mem.insert(location, result);
                 idx = idx +4;
             },
             99 => {

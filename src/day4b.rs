@@ -1,14 +1,4 @@
 
-use std::fs;
-
-fn read_file() -> Vec<String> {
-
-    let contents = fs::read_to_string("day3.txt")
-        .expect("Something went wrong reading the file");
-    
-    contents.lines().map(ToOwned::to_owned).collect()
-}
-
 fn to_list_digits(num : i32) -> Vec<i32> {
     num.to_string()
     .chars()
