@@ -1,6 +1,5 @@
 
 use std::fs;
-use std::collections::HashMap;
 
 fn read_file() -> Vec<String> {
 
