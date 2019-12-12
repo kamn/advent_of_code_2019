@@ -179,7 +179,6 @@ fn test_day10a_example1() {
     assert_eq!(get_polar_radian((-1, 0)), std::f32::consts::PI + std::f32::consts::FRAC_PI_2);
 }
 
-#[test]
 fn test_day10a_formula_ex0() {
     let r = "
 .#....#####...#..
