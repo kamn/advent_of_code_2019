@@ -184,7 +184,6 @@ fn test_day10a_formula_ex1() {
     assert_eq!(count_visible_asteroids(map, (5,8)), 33);
     assert_eq!(result, (5,8));
 }
-#[test]
 
 fn test_day10a_formula_ex2() {
     let r = "#.#...#.#.
@@ -203,7 +202,6 @@ fn test_day10a_formula_ex2() {
 
     assert_eq!(result, (1,2));
 }
-#[test]
 
 fn test_day10a_formula_ex3() {
     let r = ".#..#..###
@@ -223,7 +221,6 @@ fn test_day10a_formula_ex3() {
     assert_eq!(result, (6,3));
 }
 
-#[test]
 
 fn test_day10a_formula_ex4() {
     let r = ".#..##.###...#######
